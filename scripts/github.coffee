@@ -29,7 +29,10 @@ module.exports = (robot) ->
   # using '[\s\S]' to match multiline (instead of just '.')
   robot.respond /github issue create ([A-Za-z0-9_.-]+) "(.+)" "([\s\S]+)"/i, (res) ->
     creator = res.message.user.name
-    repo = res.match[1]
+    repo = res.match[1] # Go straight to ubyssey.ca repo
+      # Add screen shot
+      # Reply with a link to there
+      # Notify webdev slack channel
     title = res.match[2]
     desc = "#{res.match[3]}\n\n(submitted by #{creator})"
     org = config 'organization'
