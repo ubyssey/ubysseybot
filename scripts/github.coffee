@@ -1,45 +1,50 @@
 # Description:
-#   GitHub stuff.
+#   GitHub related commands
 #
 # Configuration:
 #   HUBOT_GITHUB_USERNAME
 #   HUBOT_GITHUB_PASSWORD
 #   HUBOT_GITHUB_ORGANIZATION
+#   HUBOT_GITHUB_REPO
 #
 # Commands:
-#   hubot github issue create <repo> "<title>" "<description>"
+#   hubot github issue create "<title>" "<description>"
 #
 # Author:
-#   atsushi
+#   Atsushi (atsushi@ubyssey.ca)
 
+# TODO: Make new bot only account
+# TODO: Add screen shot
+# TODO: Notify webdev slack channel
+# TODO: Add LICENSE
+
+config = require('dotenv').config()
 GitHubApi = require('github')
 
 module.exports = (robot) ->
 
-  config = require('hubot-conf')('github', robot)
+  user = process.env.HUBOT_GITHUB_USERNAME
+  pass = process.env.HUBOT_GITHUB_PASSWORD
+  org = process.env.HUBOT_GITHUB_ORGANIZATION
+  repo = process.env.HUBOT_GITHUB_REPO
 
   github = () ->
-    user = config 'username'
-    pass = config 'password'
-
-    gh = new GitHubApi(version: '3.0.0')
+    gh = new GitHubApi()
     gh.authenticate type: 'basic', username: user, password: pass
     gh
 
   # using '[\s\S]' to match multiline (instead of just '.')
-  robot.respond /github issue create ([A-Za-z0-9_.-]+) "(.+)" "([\s\S]+)"/i, (res) ->
+  robot.respond /github issue create "(.+)" "([\s\S]+)"/i, (res) ->
     creator = res.message.user.name
-    repo = res.match[1] # Go straight to ubyssey.ca repo
-      # Add screen shot
-      # Reply with a link to there
-      # Notify webdev slack channel
-    title = res.match[2]
-    desc = "#{res.match[3]}\n\n(submitted by #{creator})"
-    org = config 'organization'
-    issues = github().issues
-    issues.create user: org, repo: repo, title: title, body: desc, (err, data) ->
+    title = res.match[1]
+    desc = "#{res.match[2]}\n\n(submitted by #{creator})"
+
+    github().issues.create user: user, owner: org, repo: repo, title: title, body: desc, (err, data) ->
       if not err
-        res.send "Created issue ##{data.number} in #{org}/#{repo}."
+        # Need to use this line to print the data on log
+        # console.log require('util').inspect data
+        res.send "Created new issue in #{org}/#{repo}.\n#{data.data.html_url}"
       else
-        res.send "Error creating issue."
+        console.log require('util').inspect err
+        res.send "Hmm something went wrong while creating the issue :/"
 
