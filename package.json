@@ -5,7 +5,7 @@
   "author": "Atsushi Yamamoto <atsushi@ubyssey.ca>",
   "description": "A simple helpful bot for Ubyssey",
   "dependencies": {
-    "@invisible/deploy": "1.0.12",
+    "@google-cloud/storage": "1.4.0",
     "dotenv": "4.0.0",
     "github": "12.0.1",
     "hubot": "2.19.0",
@@ -22,10 +22,11 @@
     "hubot-slack": "4.4.0"
   },
   "engines": {
-    "node": "0.10.x"
+    "node": "8.x",
+    "npm": "5.x"
   },
   "scripts": {
-    "prestart": "./node_modules/.bin/sync",
+    "prestart": "node getEnv",
     "start": "eval $(cat .env) && ./bin/hubot -a slack"
   }
 }
