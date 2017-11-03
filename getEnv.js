@@ -11,7 +11,7 @@ if (dotEnvExists) {
 
 // On Google Cloud Platform authentication is handled for us
 const gcs = require('@google-cloud/storage')()
-const bucketName = `envvar-${process.env.GCLOUD_PROJECT}`
+const bucketName = `envvars-${process.env.GCLOUD_PROJECT}`
 console.log(`Downloading .env from bucket "${bucketName}"`)
 gcs
   .bucket(bucketName)

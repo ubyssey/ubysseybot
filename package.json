@@ -27,6 +27,6 @@
   },
   "scripts": {
     "prestart": "node getEnv",
-    "start": "eval $(cat .env) && ./bin/hubot -a slack"
+    "start": "eval $(cat .env) ./bin/hubot -a slack"
   }
 }
