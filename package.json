@@ -5,15 +5,14 @@
   "author": "Atsushi Yamamoto <atsushi@ubyssey.ca>",
   "description": "A simple helpful bot for Ubyssey",
   "dependencies": {
+    "@invisible/deploy": "1.0.12",
     "dotenv": "4.0.0",
     "github": "12.0.1",
     "hubot": "2.19.0",
-    "hubot-conf": "1.3.1",
     "hubot-diagnostics": "0.0.2",
     "hubot-google-images": "0.2.7",
     "hubot-google-translate": "0.2.1",
     "hubot-help": "0.2.2",
-    "hubot-heroku-keepalive": "1.0.3",
     "hubot-maps": "0.0.3",
     "hubot-pugme": "0.1.1",
     "hubot-redis-brain": "0.0.4",
@@ -24,5 +23,9 @@
   },
   "engines": {
     "node": "0.10.x"
+  },
+  "scripts": {
+    "prestart": "./node_modules/.bin/sync",
+    "start": "eval $(cat .env) && ./bin/hubot -a slack"
   }
 }
