@@ -23,11 +23,11 @@ You can start ubysseybot locally by running:
     bin/hubot
 
 You'll see some start up output and a prompt:
-[Google App Engine][gae]
+
     [Sat Feb 28 2015 12:38:27 GMT+0000 (GMT)] INFO Using default redis on localhost:6379
     ubysseybot>
 
-Then you can interact[Google App Engine][gae] with ubysseybot by typing `ubysseybot help`.
+Then you can interact with ubysseybot by typing `ubysseybot help`.
 
     ubysseybot> ubysseybot help
     ubysseybot animate me <query> - The same thing as `image me`, except adds [snip]
@@ -37,7 +37,7 @@ Then you can interact[Google App Engine][gae] with ubysseybot by typing `ubyssey
 ### Running locally on Slack
 
 You will need a slack app token for your specific slack team.
-CHeck out the [documentation[Google App Engine][gae] from Slack][hubot-slack-doc]
+Check out the [documentation from Slack][hubot-slack-doc]
 
     HUBOT_SLACK_TOKEN=xxxx-your-token-xxxx ./bin/hubot -a slack
 

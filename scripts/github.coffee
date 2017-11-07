@@ -22,6 +22,9 @@ GitHubApi = require('github')
 
 module.exports = (robot) ->
 
+  # Include the commands in help commands
+  robot.commands.push 'margaret issue "<title>" "<description>" - Add new issue on GitHub'
+
   user = process.env.HUBOT_GITHUB_USERNAME
   pass = process.env.HUBOT_GITHUB_PASSWORD
   org = process.env.HUBOT_GITHUB_ORGANIZATION
