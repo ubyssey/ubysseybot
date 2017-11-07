@@ -9,14 +9,13 @@
 #
 # Commands:
 #   hubot github issue create "<title>" "<description>"
+#   hubot issue "<title>" "<description>"
 #
 # Author:
 #   Atsushi (atsushi@ubyssey.ca)
 
-# TODO: Make new bot only account
 # TODO: Add screen shot
 # TODO: Notify webdev slack channel
-# TODO: Add LICENSE
 
 config = require('dotenv').config()
 GitHubApi = require('github')
@@ -61,5 +60,6 @@ module.exports = (robot) ->
       if not err
         res.send "Created new issue in #{org}/#{repo}.\n#{data.data.html_url}"
       else
+        log(err)
         res.send "Hmm something went wrong while creating the issue :/"
 
