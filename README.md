@@ -1,4 +1,4 @@
-# ubysseybot
+# ubysseybotj
 
 ubysseybot is a chat bot built on the [Hubot][hubot] framework for our [Slack][slack] deployed on [Google App Engine][gae]
 
@@ -8,6 +8,8 @@ Made with ❤️ by [The Ubyssey][ubyssey], the University of British Columbia's
 [slack]: http://slack.com/
 [gae]: https://cloud.google.com/appengine/
 [ubyssey]: https://www.ubyssey.ca/
+
+![demo](https://i.imgur.com/Baq8jD6.gif)
 
 
 ### Installation
